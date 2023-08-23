@@ -1,0 +1,92 @@
+-- -- MEMBER 테이블 삭제 쿼리
+-- DROP TABLE IF EXISTS "Member" CASCADE CONSTRAINTS;
+--
+-- -- Position 테이블 삭제 쿼리
+-- DROP TABLE IF EXISTS "Position" CASCADE CONSTRAINTS;
+--
+-- -- Preference 테이블 삭제 쿼리
+-- DROP TABLE IF EXISTS "Preference" CASCADE CONSTRAINTS;
+--
+-- -- Level 테이블 삭제 쿼리
+-- DROP TABLE IF EXISTS "Level" CASCADE CONSTRAINTS;
+--
+-- -- Member_Preference 테이블 삭제 쿼리
+-- DROP TABLE IF EXISTS "Member_Preference" CASCADE CONSTRAINTS;
+--
+-- -- Role 테이블 삭제 쿼리
+-- DROP TABLE IF EXISTS "Role" CASCADE CONSTRAINTS;
+--
+-- -- Member_Position 테이블 삭제 쿼리
+-- DROP TABLE IF EXISTS "Member_Position" CASCADE CONSTRAINTS;
+--
+--
+-- CREATE TABLE "Member" (
+--                           "member_seq" NUMBER NOT NULL,
+--                           "email" VARCHAR2(45) NOT NULL,
+--                           "password" CHAR(60) NOT NULL,
+--                           "lastAccessAt" TIMESTAMP NOT NULL,
+--                           "nickname" VARCHAR2(45) NOT NULL,
+--                           "phone_number" CHAR(11) NOT NULL,
+--                           "info" VARCHAR2(4000),
+--                           "is_online" NVARCHAR2(45),
+--                           "github_link" VARCHAR2(200),
+--                           "role_seq" NUMBER NOT NULL,
+--                           "level_seq" NUMBER
+-- );
+--
+-- CREATE TABLE "Position" (
+--                             "position_seq" NUMBER NOT NULL,
+--                             "name" VARCHAR2(100) NOT NULL
+-- );
+--
+-- CREATE TABLE "Preference" (
+--                               "preference_seq" NUMBER NOT NULL,
+--                               "name" VARCHAR2(20) NOT NULL
+-- );
+--
+-- CREATE TABLE "Level" (
+--                          "level_seq" NUMBER NOT NULL,
+--                          "name" VARCHAR2(20) NOT NULL
+-- );
+--
+-- CREATE TABLE "Member_Preference" (
+--                                      "member_seq" NUMBER NOT NULL,
+--                                      "preference_seq" NUMBER NOT NULL
+-- );
+--
+-- CREATE TABLE "Role" (
+--                         "role_seq" NUMBER NOT NULL,
+--                         "name" VARCHAR2(10) NOT NULL
+-- );
+--
+-- CREATE TABLE "Member_Position" (
+--                                    "member_seq" NUMBER NOT NULL,
+--                                    "position_seq" NUMBER NOT NULL
+-- );
+--
+-- -- PRIMARY KEY 제약조건 추가
+-- ALTER TABLE "Member" ADD CONSTRAINT "PK_MEMBER" PRIMARY KEY ("member_seq");
+-- ALTER TABLE "Position" ADD CONSTRAINT "PK_POSITION" PRIMARY KEY ("position_seq");
+-- ALTER TABLE "Preference" ADD CONSTRAINT "PK_PREFERENCE" PRIMARY KEY ("preference_seq");
+-- ALTER TABLE "Level" ADD CONSTRAINT "PK_LEVEL" PRIMARY KEY ("level_seq");
+-- ALTER TABLE "Member_Preference" ADD CONSTRAINT "PK_MEMBER_PREFERENCE" PRIMARY KEY ("member_seq", "preference_seq");
+-- ALTER TABLE "Role" ADD CONSTRAINT "PK_ROLE" PRIMARY KEY ("role_seq");
+-- ALTER TABLE "Member_Position" ADD CONSTRAINT "PK_MEMBER_POSITION" PRIMARY KEY ("member_seq", "position_seq");
+--
+-- -- 외래 키 제약조건 추가
+-- ALTER TABLE "Member" ADD CONSTRAINT "FK_Role_TO_Member_1" FOREIGN KEY ("role_seq")
+--     REFERENCES "Role" ("role_seq");
+-- ALTER TABLE "Member" ADD CONSTRAINT "FK_Level_TO_Member_1" FOREIGN KEY ("level_seq")
+--     REFERENCES "Level" ("level_seq");
+-- ALTER TABLE "Member_Preference" ADD CONSTRAINT "FK_Member_TO_Member_Preference_1" FOREIGN KEY ("member_seq")
+--     REFERENCES "Member" ("member_seq");
+-- ALTER TABLE "Member_Preference" ADD CONSTRAINT "FK_Preference_TO_Member_Preference_1" FOREIGN KEY ("preference_seq")
+--     REFERENCES "Preference" ("preference_seq");
+-- ALTER TABLE "Member_Position" ADD CONSTRAINT "FK_Member_TO_Member_Position_1" FOREIGN KEY ("member_seq")
+--     REFERENCES "Member" ("member_seq");
+-- ALTER TABLE "Member_Position" ADD CONSTRAINT "FK_Position_TO_Member_Position_1" FOREIGN KEY ("position_seq")
+--     REFERENCES "Position" ("position_seq");
+
+INSERT INTO "ROLE" values (0, 'roletest');
+INSERT INTO "LEVEL" values (0, 'leveltest');
+-- INSERT INTO "MEMBER" (member_seq, email, password, lastAccessAt, nickname, phone_number, info, is_online, github_link, role_seq, level_seq) values (0, 'testemail', 'testpwd', '2023-12-01', 'test', '01012345678', 'test' ,'test','test', 0, 0);

@@ -1,0 +1,52 @@
+###회원 가입 테스트
+POST /member/api/register
+Content-Type: application/json
+Host: localhost:8080
+
+{
+  "email": "test",
+  "password": "testpwd",
+  "nickname": "test2",
+  "phoneNumber": "01012345678",
+  "info": "테스트 입니다.",
+  "isOnline": "오프라인",
+  "roleSeq": 0,
+  "levelSeq": 0
+}
+
+###Id 중복 조회
+GET /member/exist/test
+Host: localhost:8080
+
+###Seq로 회원 조회
+GET /member/seq/1
+Host: localhost:8080
+
+###email로 회원 조회
+GET /member/api/email/test
+Host: localhost:8080
+
+###회원 수정
+PATCH /member/update/1
+Content-Type: application/json
+Host: localhost:8080
+
+{
+  "email": "test",
+  "password": "testpwd",
+  "lastAccessAt": "2023-08-25T15:30:45.123456",
+  "nickname": "test2",
+  "phoneNumber": "01012345678",
+  "info": "수정 테스트 입니다.",
+  "isOnline": "오프라인",
+  "roleSeq": 0,
+  "levelSeq": 0
+}
+
+###레벨 조회
+GET /member/api/level/1
+Host: localhost:8080
+
+###레벨 수정
+PATCH /member/api/level/update/1/1
+Host: localhost:8080

@@ -1,5 +1,6 @@
 package com.rocket.memberapi.entity;
 
+import com.rocket.memberapi.dto.request.MemberSignUpDto;
 import lombok.*;
 
 import javax.persistence.*;
@@ -25,7 +26,7 @@ public class Member {
     private String password;
 
     @Column(name = "lastaccessat", nullable = false)
-    private LocalDateTime lastaccessat;
+    private LocalDateTime lastAccessAt;
 
     @Column(name = "nickname", nullable = false, length = 45)
     private String nickname;
@@ -47,6 +48,11 @@ public class Member {
     @JoinColumn(name = "role_seq")
     private Role role;
 
-    @Column(name = "github_link", nullable = false, length = 200)
+    @Column(name = "github_link", length = 200)
     private String githubLink;
+
+    public void updateLevel(Level level) {
+        this.level = level;
+    }
+
 }
