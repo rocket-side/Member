@@ -1,8 +1,16 @@
 package com.rocket.memberapi.entity;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.*;
 
-@Entity(name = "Role")
+@Entity
+@Table(name = "Role")
+@Getter
+@AllArgsConstructor
+@NoArgsConstructor
 public class Role {
 
     @Id
