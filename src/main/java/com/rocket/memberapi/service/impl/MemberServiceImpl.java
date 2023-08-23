@@ -87,6 +87,15 @@ public class MemberServiceImpl implements MemberService {
     }
 
     @Override
+    public void updateRole(Long memberSeq, Long roleSeq) {
+        Member member = memberRepository.findById(memberSeq).orElseThrow();
+        Role role = roleRepository.findById(roleSeq).orElseThrow();
+
+        member.updateRole(role);
+        memberRepository.save(member);
+    }
+
+    @Override
     public void memberDelete(Long seq) {
         memberRepository.deleteById(seq);
     }

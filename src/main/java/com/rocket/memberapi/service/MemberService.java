@@ -18,4 +18,6 @@ public interface MemberService {
     void memberDelete(Long seq);
 
     void updateLevel(Long memberSeq, Long levelSeq);
+
+    void updateRole(Long memberSeq, Long roleSeq);
 }

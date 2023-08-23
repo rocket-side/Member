@@ -55,4 +55,8 @@ public class Member {
         this.level = level;
     }
 
+    public void updateRole(Role role) {
+        this.role = role;
+    }
+
 }
