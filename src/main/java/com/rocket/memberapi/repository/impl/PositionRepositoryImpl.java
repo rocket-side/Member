@@ -22,12 +22,12 @@ public class PositionRepositoryImpl implements PositionRepositoryCustom {
         QPosition position = QPosition.position;
         QMemberPosition memberPosition = QMemberPosition.memberPosition;
 
-        return queryFactory.select(position.name)
-                .from(member)
+        return queryFactory.select(position.name).distinct()
+                .from(position)
                 .join(memberPosition)
-                .join(memberPosition.member, member)
-                .join(memberPosition.position, position)
-                .where(member.memberSeq.eq(memberSeq))
+//                .on(memberPosition.member.memberSeq.eq(memberSeq))
+                .on(position.positionSeq.eq(memberPosition.position.positionSeq)
+                        .and(memberPosition.member.memberSeq.eq(memberSeq)))
                 .fetch();
     }
 

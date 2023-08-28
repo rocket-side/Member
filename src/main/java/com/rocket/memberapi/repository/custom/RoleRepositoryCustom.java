@@ -1,6 +1,8 @@
 package com.rocket.memberapi.repository.custom;
 
+import com.rocket.memberapi.entity.Role;
+
 public interface RoleRepositoryCustom {
 
-    String getRole(Long memberSeq);
+    Role getRole(Long memberSeq);
 }

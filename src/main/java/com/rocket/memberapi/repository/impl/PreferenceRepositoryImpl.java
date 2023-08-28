@@ -23,12 +23,12 @@ public class PreferenceRepositoryImpl implements PreferenceRepositoryCustom {
         QMemberPreference memberPreference = QMemberPreference.memberPreference;
 
         return queryFactory
-                .select(preference.name)
-                .from(member)
+                .select(preference.name).distinct()
+                .from(preference)
                 .join(memberPreference)
-                .join(memberPreference.member, member)
-                .join(memberPreference.preference, preference)
-                .where(member.memberSeq.eq(memberSeq))
+                .on(preference.preferenceSeq.eq(memberPreference.preference.preferenceSeq)
+                        .and(memberPreference.member.memberSeq.eq(memberSeq)))
+//                .where(member.memberSeq.eq(memberSeq))
                 .fetch();
     }
 
@@ -39,7 +39,7 @@ public class PreferenceRepositoryImpl implements PreferenceRepositoryCustom {
         queryFactory
                 .insert(memberPreference)
                 .set(memberPreference.member.memberSeq, memberSeq)
-                .set(memberPreference.preference.preference_seq, preferenceSeq)
+                .set(memberPreference.preference.preferenceSeq, preferenceSeq)
                 .execute();
     }
 
@@ -50,7 +50,7 @@ public class PreferenceRepositoryImpl implements PreferenceRepositoryCustom {
         queryFactory
                 .delete(memberPreference)
                 .where(memberPreference.member.memberSeq.eq(memberSeq)
-                        .and(memberPreference.preference.preference_seq.eq(preferenceSeq)))
+                        .and(memberPreference.preference.preferenceSeq.eq(preferenceSeq)))
                 .execute();
     }
 }

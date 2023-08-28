@@ -27,9 +27,11 @@ public class MemberResponseDto {
 
     private String info;
 
-    private Role role;
+    private String isOnline;
 
-    private Level level;
+    private RoleResponseDto role;
+
+    private LevelResponseDto level;
 
     private String githubLink;
 }
