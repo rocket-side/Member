@@ -1,6 +1,7 @@
 package com.rocket.memberapi.service.impl;
 
 import com.rocket.memberapi.dto.response.LevelResponseDto;
+import com.rocket.memberapi.entity.Level;
 import com.rocket.memberapi.repository.LevelRepository;
 import com.rocket.memberapi.repository.MemberRepository;
 import com.rocket.memberapi.service.LevelService;
@@ -17,9 +18,10 @@ public class LevelServiceImpl implements LevelService {
 
     @Override
     public LevelResponseDto getLevel(Long memberSeq) {
-        String name = levelRepository.getLevel(memberSeq);
+        Level level = levelRepository.getLevel(memberSeq);
         LevelResponseDto levelResponseDto = new LevelResponseDto();
-        levelResponseDto.setName(name);
+        levelResponseDto.setName(level.getName());
+        levelResponseDto.setLevelSeq(level.getLevelSeq());
         return levelResponseDto;
     }
 }

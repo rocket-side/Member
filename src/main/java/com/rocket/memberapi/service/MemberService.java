@@ -1,6 +1,7 @@
 package com.rocket.memberapi.service;
 
 import com.rocket.memberapi.dto.request.MemberSignUpDto;
+import com.rocket.memberapi.dto.response.MemberLoginResponseDto;
 import com.rocket.memberapi.dto.response.MemberResponseDto;
 
 public interface MemberService {
@@ -11,7 +12,7 @@ public interface MemberService {
 
     MemberResponseDto findByMemberSeq(Long seq);
 
-    MemberResponseDto findByEmail(String email);
+    MemberLoginResponseDto findByEmail(String email);
 
     void memberUpdate(Long seq, MemberSignUpDto dto);
 

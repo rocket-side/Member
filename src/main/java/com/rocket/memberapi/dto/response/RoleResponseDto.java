@@ -11,5 +11,7 @@ import lombok.Setter;
 @NoArgsConstructor
 public class RoleResponseDto {
 
+    private Long roleSeq;
+
     private String name;
 }

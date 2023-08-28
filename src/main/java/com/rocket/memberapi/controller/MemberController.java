@@ -53,7 +53,7 @@ public class MemberController {
 
     @ApiOperation(value = "email로 회원 조회", notes = "email를 이용하여 회원을 조회합니다.")
     @GetMapping("/email/{email}")
-    public ResponseEntity<MemberResponseDto> findByEmail(@PathVariable String email) {
+    public ResponseEntity<MemberLoginResponseDto> findByEmail(@PathVariable String email) {
         return ResponseEntity.status(HttpStatus.OK).body(memberService.findByEmail(email));
     }
 

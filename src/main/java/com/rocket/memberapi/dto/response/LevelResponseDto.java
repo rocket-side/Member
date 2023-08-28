@@ -11,5 +11,7 @@ import lombok.Setter;
 @NoArgsConstructor
 public class LevelResponseDto {
 
+    private Long levelSeq;
+
     private String name;
 }

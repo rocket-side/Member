@@ -1,7 +1,10 @@
 package com.rocket.memberapi.service.impl;
 
 import com.rocket.memberapi.dto.request.MemberSignUpDto;
+import com.rocket.memberapi.dto.response.LevelResponseDto;
+import com.rocket.memberapi.dto.response.MemberLoginResponseDto;
 import com.rocket.memberapi.dto.response.MemberResponseDto;
+import com.rocket.memberapi.dto.response.RoleResponseDto;
 import com.rocket.memberapi.entity.Level;
 import com.rocket.memberapi.entity.Member;
 import com.rocket.memberapi.entity.Role;
@@ -44,9 +47,9 @@ public class MemberServiceImpl implements MemberService {
     }
 
     @Override
-    public MemberResponseDto findByEmail(String email) {
+    public MemberLoginResponseDto findByEmail(String email) {
         Member member = memberRepository.findByEmail(email).orElseThrow();
-        return toDto(member);
+        return new MemberLoginResponseDto(member.getMemberSeq(), member.getEmail(), member.getNickname(), member.getPassword(), new RoleResponseDto(member.getRole().getRoleSeq(), member.getRole().getName()));
     }
 
     @Override
@@ -125,10 +128,10 @@ public class MemberServiceImpl implements MemberService {
                 .githubLink(member.getGithubLink())
                 .info(member.getInfo())
                 .lastAccessAt(member.getLastAccessAt())
-                .level(member.getLevel())
+                .level(new LevelResponseDto(member.getLevel().getLevelSeq(), member.getLevel().getName()))
                 .nickname(member.getNickname())
                 .phoneNumber(member.getPhoneNumber())
-                .role(member.getRole())
+                .role(new RoleResponseDto(member.getRole().getRoleSeq(), member.getRole().getName()))
                 .build();
     }
 }
