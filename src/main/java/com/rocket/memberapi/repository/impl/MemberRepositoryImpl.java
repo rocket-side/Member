@@ -15,13 +15,13 @@ public class MemberRepositoryImpl implements MemberRepositoryCustom {
     private final JPAQueryFactory queryFactory;
 
     @Override
-    public Boolean existById(Long seq) {
+    public Boolean existById(String email) {
         QMember member = QMember.member;
 
         Integer fetchOne = queryFactory
                 .selectOne()
                 .from(member)
-                .where(member.memberSeq.eq(seq))
+                .where(member.email.eq(email))
                 .fetchFirst();
 
         return fetchOne != null;

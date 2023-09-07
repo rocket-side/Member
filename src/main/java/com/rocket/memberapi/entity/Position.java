@@ -1,8 +1,16 @@
 package com.rocket.memberapi.entity;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.*;
 
-@Entity(name = "Position")
+@Entity
+@Getter
+@AllArgsConstructor
+@NoArgsConstructor
+@Table(name = "Position")
 public class Position {
 
     @Id

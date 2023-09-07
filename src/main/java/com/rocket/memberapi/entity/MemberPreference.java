@@ -17,10 +17,12 @@ public class MemberPreference {
     private PK pk;
 
     @ManyToOne
+    @MapsId("memberSeq")
     @JoinColumn(name = "member_seq")
     private Member member;
 
     @ManyToOne
+    @MapsId("preferenceSeq")
     @JoinColumn(name = "preference_seq")
     private Preference preference;
 

@@ -1,0 +1,101 @@
+###회원 가입 테스트
+POST /member/api/register
+Content-Type: application/json
+Host: localhost:8080
+
+{
+  "email": "test",
+  "password": "testpwd",
+  "nickname": "test2",
+  "phoneNumber": "01012345678",
+  "info": "테스트 입니다.",
+  "isOnline": "오프라인",
+  "roleSeq": 0,
+  "levelSeq": 0
+}
+
+###Id 중복 조회
+GET /member/api/exist/test
+Host: localhost:8080
+
+###Seq로 회원 조회
+GET /member/api/seq/1
+Host: localhost:8080
+
+###email로 회원 조회
+GET /member/api/email/testemail
+Host: localhost:8888
+
+###회원 수정
+PATCH /member/api/update/1
+Content-Type: application/json
+Host: localhost:8080
+
+{
+  "email": "test",
+  "password": "testpwd",
+  "lastAccessAt": "2023-08-25T15:30:45.123456",
+  "nickname": "test2",
+  "phoneNumber": "01012345678",
+  "info": "수정 테스트 입니다.",
+  "isOnline": "오프라인",
+  "roleSeq": 0,
+  "levelSeq": 0
+}
+
+###레벨 조회
+GET /member/api/level/1
+Host: localhost:8888
+
+###레벨 수정
+PATCH /member/api/level/update/1/3
+Host: localhost:8080
+
+###관심 분야 조회
+GET /member/api/preference/1
+Host: localhost:8080
+
+###관심 분야 등록
+POST /member/api/preference/register/1
+Content-Type: application/json
+Host: localhost:8080
+
+{
+  "preferenceSeq" : [
+    3,
+    4,
+    5
+  ]
+}
+
+###관심 분야 삭제
+DELETE /member/api/preference/delete/1/3
+Host: localhost:8080
+
+###권한 조회
+GET /member/api/role/1
+Host: localhost:8888
+
+###권한 수정
+PATCH /member/api/role/update/1/1
+Host: localhost:8888
+
+###포지션 조회
+GET /member/api/position/1
+Host: localhost:8080
+
+###포지션 등록
+POST /member/api/position/register/1
+Content-Type: application/json
+Host: localhost:8080
+
+{
+  "positionSeqList" : [
+    3,
+    4
+  ]
+}
+
+###포지션 삭제
+DELETE /member/api/position/delete/1/3
+Host: localhost:8080

@@ -7,6 +7,7 @@ import java.io.Serializable;
 
 @Entity
 @Getter
+@Setter
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
@@ -17,10 +18,12 @@ public class MemberPosition {
     private PK pk;
 
     @ManyToOne
+    @MapsId("memberSeq")
     @JoinColumn(name = "member_seq")
     private Member member;
 
     @ManyToOne
+    @MapsId("positionSeq")
     @JoinColumn(name = "position_seq")
     private Position position;
 
